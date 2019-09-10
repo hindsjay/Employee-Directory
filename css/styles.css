@@ -5,3 +5,58 @@
 body {
   font-family: 'Open Sans', sans-serif;
 }
+
+h5,
+p {
+  margin: 0;
+}
+
+h1 {
+  text-align: center;
+  font-size: 1.2em;
+  font-style: italic;
+}
+
+.card {
+  border: 2px solid rgba(0, 0, 0, .1);
+  border-radius: 5px;
+  width: 300px;
+  height: 125px;
+  display: flex;
+  align-items: center;
+  padding: 15px;
+}
+
+.card-image-container {
+  width: 100px;
+}
+
+.card img {
+  display: block;
+  border-radius: 50%;
+  width: 100%;
+}
+
+.card-content {
+  margin-left: 15px;
+}
+
+.name,
+.city {
+  text-transform: capitalize;
+}
+
+.name {
+  margin-bottom: 7px;
+  letter-spacing: .3px;
+}
+
+.email {
+  margin-bottom: 6px;
+}
+
+.email,
+.city {
+  font-size: .7em;
+  color: grey
+}
