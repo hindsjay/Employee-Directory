@@ -10,7 +10,7 @@ function fetchData(url) {
     .catch(error => console.log('Looks like there was a problem!', error))
 }
 
-fetchData('https://randomuser.me/api/?results=12&nat=us&inc=picture,name,email,location,phone,dob&seed=caefd049848604e0')
+fetchData('https://randomuser.me/api/?results=12&nat=us&inc=picture,name,email,location,phone,dob')
 
 
 // function to check the status of the fetch request
