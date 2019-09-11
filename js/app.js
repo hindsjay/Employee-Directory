@@ -1,4 +1,7 @@
 const mainContainer = document.querySelector('.main-container');
+const overlay = document.querySelector('.overlay');
+const modalContent = document.querySelector('.modal-content');
+const modalClose = document.querySelector('.modal-close');
 
 // fetch function to get data from API
 function fetchData(url) {
@@ -46,3 +49,13 @@ function generateHTML(json) {
     mainContainer.appendChild(cardDiv);
   });
 }
+
+// event listener to enable modal
+mainContainer.addEventListener('click', (event) => {
+  const cardElements = document.querySelectorAll('.card');
+  console.log(cardElements);
+
+  // if (event.target === cardElement) {
+  //   console.log(event.target);
+  // }
+});
