@@ -2,6 +2,7 @@ const mainContainer = document.querySelector('.main-container');
 const overlay = document.querySelector('.overlay');
 const modalContent = document.querySelector('.modal-content');
 const modalClose = document.querySelector('.modal-close');
+let fetchResponseData = [];
 
 // fetch function to get data from API
 function fetchData(url) {
@@ -27,9 +28,12 @@ function checkStatus(response) {
 
 // function to dynamically generate html elements
 function generateHTML(json) {
-  json.results.forEach(element => {
+  fetchResponseData = json.results;
+
+  json.results.forEach( (element, index) => {
     const cardDiv = document.createElement('div');
     cardDiv.classList.add('card');
+    cardDiv.setAttribute('data-index', `${index}`);
 
     const imageDiv = document.createElement('div');
     imageDiv.classList.add('card-image-container');
@@ -50,12 +54,40 @@ function generateHTML(json) {
   });
 }
 
+
+function modalInfo(index) {
+  const modalDetails = fetchResponseData[index];
+  let date = new Date(modalDetails.dob.date)
+
+  let modalHTML = `
+    <img src="${modalDetails.picture.large}" alt="headshot" class="modal-image">
+    <div class="">
+      <h5 class="name">${modalDetails.name.first} ${modalDetails.name.last}</h5>
+      <p class="email margin-b">${modalDetails.email}</p>
+      <p class="city">${modalDetails.location.city}</p>
+      <hr class="hr-style">
+      <p class="city margin-b">${modalDetails.phone}</p>
+      <p class="city margin-b">${modalDetails.location.street}, ${modalDetails.location.state}&nbsp 
+      ${modalDetails.location.postcode}</p>
+      <p class="city margin-b">Birthday: ${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}</p>
+  `;
+
+  modalContent.innerHTML = modalHTML;
+  overlay.classList.remove('hidden');
+}
+
+
 // event listener to enable modal
 mainContainer.addEventListener('click', (event) => {
-  const cardElements = document.querySelectorAll('.card');
-  console.log(cardElements);
+  // if click grid container null is returned to console so this if statement prevents that from happening
+  if (event.target !== mainContainer) {
+    const cardElement = event.target.closest('.card');
+    let cardClickedIndex = cardElement.getAttribute('data-index');
 
-  // if (event.target === cardElement) {
-  //   console.log(event.target);
-  // }
+    modalInfo(cardClickedIndex);
+  }
+});
+
+modalClose.addEventListener('click', () => {
+  overlay.classList.add('hidden');
 });
