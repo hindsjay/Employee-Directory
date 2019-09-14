@@ -55,9 +55,13 @@ h1,
   width: 90px;
 }
 
+.card img,
+.modal-image {
+  border-radius: 50%;
+}
+
 .card img {
   display: block;
-  border-radius: 50%;
   width: 100%;
 }
 
@@ -113,6 +117,11 @@ input::placeholder {
 *************** -- Modal -- ***************
 */
 
+.modal,
+.modal-close {
+  background-color: #f6f7f9;
+}
+
 .overlay {
   position: absolute;
   top: 0;
@@ -123,9 +132,8 @@ input::placeholder {
 }
 
 .modal {
-  background-color: #f6f7f9;
   width: 80%;
-  max-width: 380px;
+  max-width: 320px;
   margin: 30px auto auto;
   text-align: center;
   border: 1px solid rgba(0, 0, 0, .1);
@@ -133,6 +141,7 @@ input::placeholder {
   padding: 30px 20px;
   /* for the modal close button that's position: absolute */
   position: relative;
+  top: 10%;
 }
 
 .modal-close {
@@ -142,8 +151,22 @@ input::placeholder {
   right: 15px;
   top: 5px;
   cursor: pointer;
+  border: none;
 }
 
 .hidden {
   display: none;
 }
+
+.modal-image {
+  margin-bottom: 10px;
+}
+
+.hr-style {
+  margin: 30px 0;
+  opacity: .3;
+}
+
+.margin-b {
+  margin-bottom: 10px;
+} 
