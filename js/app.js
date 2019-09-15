@@ -98,7 +98,7 @@ function modalInfo(index) {
 
 // event listener to enable modal
 mainContainer.addEventListener('click', (event) => {
-  // if grid container is clicked null is returned to console.  This if statement prevents that from happening
+  // if grid container is clicked, error is thrown to console.  This if statement prevents that from happening
   if (event.target !== mainContainer) {
     const cardElement = event.target.closest('.card');
     cardClickedIndex = parseInt(cardElement.getAttribute('data-index'));
