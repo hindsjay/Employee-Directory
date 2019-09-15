@@ -11,14 +11,22 @@
 </head>
 <body>
   <header>
-    <h1>Awesome Startup Employee Directory</h1>
+    <div class="header-container">
+      <h1>The Startup Co.</h1>
+      <h3>Employee Directory</h3>
+      <div class="toggle-container">
+        <p class="mode">Dark Mode</p>
+        <input type="checkbox" id="toggle" class="checkbox">
+        <label for="toggle" class="switch"><span class="on">ON</span></label>
+      </div>
+
+      <div class="search-bar">
+        <input type="search" placeholder="Enter employee name" id="input-bar">
+      </div>
+    </div>
   </header>
 
   <main>
-    <div class="search-bar">
-      <input type="search" placeholder="Enter employee name" id="input-bar">
-    </div>
-
     <div class="main-container">
       <!-- code for each employee card added here dynamically -->
     </div>
