@@ -38,7 +38,7 @@ function checkStatus(response) {
 function generateHTML(json) {
   fetchResponseData = json.results;
 
-  json.results.forEach( (element, index) => {
+  fetchResponseData.forEach( (element, index) => {
     const cardDiv = document.createElement('div');
     cardDiv.classList.add('card');
     cardDiv.setAttribute('data-index', `${index}`);
