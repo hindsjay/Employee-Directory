@@ -4,6 +4,7 @@ const overlay = document.querySelector('.overlay');
 const modalContent = document.querySelector('.modal-content');
 const modalClose = document.querySelector('.modal-close');
 const inputBar = document.getElementById('input-bar');
+let cardClickedIndex;
 let fetchResponseData = [];
 
 
@@ -12,7 +13,6 @@ function fetchData(url) {
   return fetch(url)
     .then(checkStatus)
     .then(response => response.json())
-    // .then(data => console.log(data))
     .then(generateHTML)
     .catch(error => console.log('Looks like there was a problem!', error))
 }
@@ -35,7 +35,6 @@ function checkStatus(response) {
 // function to dynamically generate html elements
 function generateHTML(json) {
   fetchResponseData = json.results;
-  console.log(fetchResponseData);
 
   json.results.forEach( (element, index) => {
     const cardDiv = document.createElement('div');
@@ -86,16 +85,17 @@ function modalInfo(index) {
   `;
 
   modalContent.innerHTML = modalHTML;
+  checkIndex(index);
   overlay.classList.remove('hidden');
 }
 
 
 // event listener to enable modal
 mainContainer.addEventListener('click', (event) => {
-  // if click grid container null is returned to console so this if statement prevents that from happening
+  // if grid container is clicked null is returned to console.  This if statement prevents that from happening
   if (event.target !== mainContainer) {
     const cardElement = event.target.closest('.card');
-    let cardClickedIndex = cardElement.getAttribute('data-index');
+    cardClickedIndex = parseInt(cardElement.getAttribute('data-index'));
     
     window.scroll(0,0);
     modalInfo(cardClickedIndex);
@@ -126,3 +126,32 @@ inputBar.addEventListener('keyup', () => {
 });
 
 
+// function to switch employee details when modal activated
+modalContent.addEventListener('click', (event) => {
+  const chevronLeft = document.querySelector('.fa-angle-left');
+  const chevronRight = document.querySelector('.fa-angle-right');
+
+  if (cardClickedIndex >= 0 && cardClickedIndex <= 11) {
+    if (event.target === chevronLeft && cardClickedIndex > 0) {
+      cardClickedIndex--;
+    } else if (event.target === chevronRight && cardClickedIndex < 11) {
+      cardClickedIndex++;
+    }
+    modalInfo(cardClickedIndex);
+  }
+});
+
+
+// to check if we are at index 0 or 11 - if so, then hide appropriate chevron
+function checkIndex(index) {
+  const chevronLeft = document.querySelector('.fa-angle-left');
+  const chevronRight = document.querySelector('.fa-angle-right');
+
+  if (index === 0) {
+    chevronLeft.style.opacity = '0';
+  }
+
+  if (index === 11) {
+    chevronRight.style.opacity = '0';
+  }
+}
