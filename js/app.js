@@ -4,6 +4,7 @@ const overlay = document.querySelector('.overlay');
 const modalContent = document.querySelector('.modal-content');
 const modalClose = document.querySelector('.modal-close');
 const inputBar = document.getElementById('input-bar');
+const toggle = document.getElementById('toggle');
 let cardClickedIndex;
 let chevronLeft;
 let chevronRight;
@@ -22,6 +23,9 @@ function fetchData(url) {
 
 // to fetch data from randomuser API
 fetchData('https://randomuser.me/api/?results=12&nat=us&inc=picture,name,email,location,phone,dob')
+
+// check local storage settings
+localStorageCheck();
 
 
 // function to check the status of the fetch request
@@ -134,7 +138,7 @@ inputBar.addEventListener('keyup', () => {
 
 // function to switch employee details when modal activated
 modalContent.addEventListener('click', (event) => {
-  if (cardClickedIndex >= 0 && cardClickedIndex <= 11) {
+  if (event.target === chevronLeft || event.target === chevronRight) {
     if (event.target === chevronLeft && cardClickedIndex > 0) {
       cardClickedIndex--;
     } else if (event.target === chevronRight && cardClickedIndex < 11) {
@@ -152,5 +156,36 @@ function checkIndex(index) {
   }
   if (index === 11) {
     chevronRight.style.opacity = '0';
+  }
+}
+
+
+// function to update dark theme to on/off in localStorage and on screen
+function updateTheme() {
+  if (toggle.checked) {
+    localStorage.setItem('Dark-Theme', 'on')
+    document.documentElement.setAttribute('data-theme', 'dark');
+  } else {
+    document.documentElement.removeAttribute('data-theme');
+    localStorage.setItem('Dark-Theme', 'off')
+  }
+}
+
+
+// event listener for theme toggle
+toggle.addEventListener('click', updateTheme);
+
+
+// check what value for theme is in local storage
+function localStorageCheck() {
+  if (typeof(localStorage) !== "undefined") {
+    let storageThemeValue = localStorage.getItem('Dark-Theme')
+  
+    if (storageThemeValue === 'off') {
+      toggle.checked = false;
+    } else {
+      toggle.checked = true;
+      updateTheme();
+    }
   }
 }
