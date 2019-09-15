@@ -43,14 +43,14 @@ p {
 }
 
 h1 {
-  font-size: 1.2em;
+  font-size: 1.6em;
   text-transform: uppercase;
   padding-top: 30px;
   margin-bottom: 5px;
 }
 
 h3 {
-  font-size: .8em;
+  font-size: 1em;
 }
 
 h1,
@@ -312,14 +312,6 @@ input::placeholder {
   h1,
   h3 {
     text-align: left;
-  }
-
-  h1 {
-    font-size: 1.6em;
-  }
-
-  h3 {
-    font-size: 1em;
   }
 
   .toggle-container,
