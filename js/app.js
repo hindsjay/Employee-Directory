@@ -10,7 +10,6 @@ let chevronLeft;
 let chevronRight;
 let fetchResponseData = [];
 
-
 // fetch function to get data from API
 function fetchData(url) {
   return fetch(url)
@@ -19,7 +18,6 @@ function fetchData(url) {
     .then(generateHTML)
     .catch(error => console.log('Looks like there was a problem!', error))
 }
-
 
 // to fetch data from randomuser API
 fetchData('https://randomuser.me/api/?results=12&nat=us&inc=picture,name,email,location,phone,dob')
@@ -178,7 +176,7 @@ toggle.addEventListener('click', updateTheme);
 
 // check what value for theme is in local storage
 function localStorageCheck() {
-  if (typeof(localStorage) !== "undefined") {
+  if (localStorage.length > 0) {
     let storageThemeValue = localStorage.getItem('Dark-Theme')
   
     if (storageThemeValue === 'off') {
