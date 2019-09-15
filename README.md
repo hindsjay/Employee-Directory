@@ -8,4 +8,5 @@ Highlights of the features for this project:
 - Each employee is clickable which would enable a modal to appear with further details about that employee 
 - When the modal is activated user can also move back and forth between employee details  
 - Employee search feature implemented
+- Toggle to switch between light and dark themes added.  Local storage used to allow settings to persist at page reload
 - Project is fully responsive, optimized for mobile, tablet, and desktop viewing
