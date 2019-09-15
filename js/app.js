@@ -5,6 +5,8 @@ const modalContent = document.querySelector('.modal-content');
 const modalClose = document.querySelector('.modal-close');
 const inputBar = document.getElementById('input-bar');
 let cardClickedIndex;
+let chevronLeft;
+let chevronRight;
 let fetchResponseData = [];
 
 
@@ -85,6 +87,10 @@ function modalInfo(index) {
   `;
 
   modalContent.innerHTML = modalHTML;
+
+  chevronLeft = document.querySelector('.fa-angle-left');
+  chevronRight = document.querySelector('.fa-angle-right');
+
   checkIndex(index);
   overlay.classList.remove('hidden');
 }
@@ -128,9 +134,6 @@ inputBar.addEventListener('keyup', () => {
 
 // function to switch employee details when modal activated
 modalContent.addEventListener('click', (event) => {
-  const chevronLeft = document.querySelector('.fa-angle-left');
-  const chevronRight = document.querySelector('.fa-angle-right');
-
   if (cardClickedIndex >= 0 && cardClickedIndex <= 11) {
     if (event.target === chevronLeft && cardClickedIndex > 0) {
       cardClickedIndex--;
@@ -142,15 +145,11 @@ modalContent.addEventListener('click', (event) => {
 });
 
 
-// to check if we are at index 0 or 11 - if so, then hide appropriate chevron
+// to check if we are at index 0 or 11 - if so, then hide appropriate chevron in modal
 function checkIndex(index) {
-  const chevronLeft = document.querySelector('.fa-angle-left');
-  const chevronRight = document.querySelector('.fa-angle-right');
-
   if (index === 0) {
     chevronLeft.style.opacity = '0';
   }
-
   if (index === 11) {
     chevronRight.style.opacity = '0';
   }
