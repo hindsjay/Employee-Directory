@@ -49,6 +49,7 @@ h1,
   display: flex;
   align-items: center;
   padding: 15px 10px;
+  cursor: pointer;
 }
 
 .card-image-container {
@@ -154,6 +155,10 @@ input::placeholder {
   border: none;
 }
 
+.modal-content {
+  position: relative;
+}
+
 .hidden {
   display: none;
 }
@@ -169,4 +174,31 @@ input::placeholder {
 
 .margin-b {
   margin-bottom: 10px;
-} 
+}
+
+.fa {
+  font-size: 1.5em;
+  cursor: pointer;
+}
+
+.chevrons {
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  display: flex;
+  justify-content: space-between;
+}
+
+
+/* to allow modal background to cover full page and elements */
+@media (min-width: 320px) {
+  .overlay {
+    height: 2000px;
+  }
+}
+
+@media (min-width: 630px) {
+  .overlay {
+    height: 1050px;
+  }
+}
