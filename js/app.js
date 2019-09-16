@@ -16,11 +16,11 @@ function fetchData(url) {
     .then(checkStatus)
     .then(response => response.json())
     .then(generateHTML)
-    .catch(error => console.log('Looks like there was a problem!', error))
+    .catch(error => console.log('Looks like there was a problem!', error));
 }
 
 // to fetch data from randomuser API
-fetchData('https://randomuser.me/api/?results=12&nat=us&inc=picture,name,email,location,phone,dob')
+fetchData('https://randomuser.me/api/?results=12&nat=us&inc=picture,name,email,location,phone,dob');
 
 // check local storage settings
 localStorageCheck();
@@ -31,7 +31,7 @@ function checkStatus(response) {
   if (response.ok) {
     return Promise.resolve(response);
   } else {
-    return Promise.reject(new Error(response.statusText))
+    return Promise.reject(new Error(response.statusText));
   }
 }
 
@@ -68,7 +68,7 @@ function generateHTML(json) {
 // to create elements for the modal window
 function modalInfo(index) {
   const modalDetails = fetchResponseData[index];
-  let date = new Date(modalDetails.dob.date)
+  let date = new Date(modalDetails.dob.date);
 
   let modalHTML = `
     <img src="${modalDetails.picture.large}" alt="headshot" class="modal-image">
@@ -161,11 +161,11 @@ function checkIndex(index) {
 // function to update dark theme to on/off in localStorage and on screen
 function updateTheme() {
   if (toggle.checked) {
-    localStorage.setItem('Dark-Theme', 'on')
+    localStorage.setItem('Dark-Theme', 'on');
     document.documentElement.setAttribute('data-theme', 'dark');
   } else {
     document.documentElement.removeAttribute('data-theme');
-    localStorage.setItem('Dark-Theme', 'off')
+    localStorage.setItem('Dark-Theme', 'off');
   }
 }
 
@@ -177,7 +177,7 @@ toggle.addEventListener('click', updateTheme);
 // check what value for theme is in local storage
 function localStorageCheck() {
   if (localStorage.length > 0) {
-    let storageThemeValue = localStorage.getItem('Dark-Theme')
+    let storageThemeValue = localStorage.getItem('Dark-Theme');
   
     if (storageThemeValue === 'off') {
       toggle.checked = false;
