@@ -84,6 +84,11 @@ h3,
   align-items: center;
   padding: 15px 10px;
   cursor: pointer;
+  transition: all .2s ease-in-out;
+}
+
+.card:hover {
+  transform: scale(1.03);
 }
 
 .card-image-container {
