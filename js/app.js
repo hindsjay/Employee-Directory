@@ -78,8 +78,7 @@ function modalInfo(index) {
       <p class="city">${modalDetails.location.city}</p>
       <hr class="hr-style">
       <p class="city margin-b">${modalDetails.phone}</p>
-      <p class="city margin-b">${modalDetails.location.street}, ${modalDetails.location.state}&nbsp 
-      ${modalDetails.location.postcode}</p>
+      <p class="city margin-b">${modalDetails.location.street.number} ${modalDetails.location.street.name}, ${modalDetails.location.state}&nbsp ${modalDetails.location.postcode}</p>
       <p class="city margin-b">Birthday: ${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}</p>
     </div>
     <div class="chevrons">
